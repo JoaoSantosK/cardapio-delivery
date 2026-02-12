@@ -6,20 +6,25 @@
     <meta name="author" content="João Santos">
     <meta name="keyword" content="palavras,separadas,por,virgulas">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
     <title>Cardápio</title>
 </head>
 <body>
     
+    <div class="notf">
+        <span id="notfR"></span>
+    </div><!--notf-->
     <header>
-        <i>Home</i>
+        <i class="fa-solid fa-arrow-left"></i>
         <div class="txt-t">
                 <h1>Cardápio</h1>
                 <p>Fique à vontade para montar seu prato!</p>
             </div><!--txt-t-->
         <div class="container">
-            
-
+            <h1>Monte o seu pedido em poucos cliques!</h1>
+            <div class="rst-o" id="btn-r" onclick="resetOrder()">Resetar o pedido</div><!--rst-o-->
+            <input id="input-order" type="text">
         </div><!--container-->
     </header>
 
