@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,body {
+    height: 100%;
+}
+
+/*Variáveis*/
+
+
+
+/*Tags de uso*/
+
+.container {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 0 2%;
+}
+
+/*header*/
+
+header {
+    width: 100%;
+    height: 170px;
+    background-color: rgb(109, 109, 136);
+}
+
+header > i {
+    color: black;
+    font-weight: normal;
+    font-style: normal;
+    position: absolute;
+    top: 1%;
+    left: 1%;
+    cursor: pointer;
+}
+
+header .txt-t {
+    color: #fff;
+    text-align: center;
+    padding: 1% 0;
+}
+
+header .container {
+    background-color: #ccc;
+    width: 100%;
+    height: 100px;
+    max-width: 1280px;
+    position: relative;
+    top: 40px;
+}
+
