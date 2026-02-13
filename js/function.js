@@ -11,3 +11,7 @@ var arrow = document.querySelector('.fa-arrow-left');
 arrow.addEventListener('click', function () {
     window.location.href = 'algo.html';
 })
+
+var notify = document.getElementById('notfR');
+
+notify.innerText = 'Pedido resetado com sucesso!';
