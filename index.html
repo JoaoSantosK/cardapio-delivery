@@ -12,7 +12,7 @@
 </head>
 <body>
     
-    <div class="notf">
+    <div class="notf" id="notf">
         <span id="notfR"></span>
     </div><!--notf-->
     <header>
@@ -23,10 +23,17 @@
             </div><!--txt-t-->
         <div class="container">
             <h1>Monte o seu pedido em poucos cliques!</h1>
-            <div class="rst-o" id="btn-r">Resetar o pedido</div><!--rst-o-->
-            <input id="input-order" type="text">
+            <div class="btn-group">
+                <div class="btn-m" id="btn-r">Resetar o pedido</div><!--rst-o-->
+                <div class="btn-m" id="chk-o">Checar pedido</div><!--chk-o-->
+                <div class="btn-m" id="ord-n">Finalizar pedido</div><!--ord-n-->
+            </div><!--btn-group-->
+
+            <input type="text" id="input-order">
         </div><!--container-->
     </header>
+    <!--input-order < id para reset de pedido-->
+
 
     <script src="js/function.js"></script>
 </body>
