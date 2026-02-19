@@ -128,3 +128,82 @@ header .container .btn-m:hover {
     color: white;
     border: 1px solid white;
 }
+
+/*section*/
+
+section.s-main {
+    width: 100%;
+    min-height: 90vh;
+    height: 90vh;
+    background-color: blue;
+}
+
+section.s-main .container {
+    width: 100%;
+    height: 100%;
+    padding: 8% 5% 2% 5%;
+    display: flex;
+    flex-direction: column;
+}
+
+section .order-box {
+    width: 100%;
+    height: 100%; /*Remover depois*/
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 15px;
+}
+
+section .order-box > .groups {
+    width: 100%;
+    min-height: 125px;
+    padding: 1% 5%;
+    background-color: rgb(56, 27, 27);
+}
+
+section .order-box .g-size {
+    width: 100%;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-color: red;
+}
+
+h1.title-g {
+    color: white;
+    font-size: 28px;
+    padding: 0.5%;
+}
+
+section .order-box .size-btns {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+section .order-box .btn-order {
+    width: 140px;
+    height: 40px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 15px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 14px;
+    cursor: pointer;
+    user-select: none;
+    margin-right: 2%;
+}
+
+section .order-box .g-tborder {
+    background-color: rgb(32, 25, 54);
+}
+
+section .order-box .g-border {
+    background-color: rgb(14, 39, 31);
+}
+
+section .order-box .g-drink {
+    background-color: rgb(82, 67, 67);
+}
