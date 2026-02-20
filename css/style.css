@@ -17,9 +17,9 @@ html,body {
 .container {
     max-width: 100%;
     display: flex;
-    flex-direction: column;
     margin: 0 auto;
     padding: 0 2%;
+    flex-direction: column;
 }
 
 .notf {
@@ -133,8 +133,7 @@ header .container .btn-m:hover {
 
 section.s-main {
     width: 100%;
-    min-height: 90vh;
-    height: 90vh;
+    min-height: 90vh;   
     background-color: blue;
 }
 
@@ -143,15 +142,17 @@ section.s-main .container {
     height: 100%;
     padding: 8% 5% 2% 5%;
     display: flex;
-    flex-direction: column;
+    gap: 30px;
+    align-items: flex-start;
+    flex-direction: row;
 }
 
 section .order-box {
     width: 100%;
-    height: 100%; /*Remover depois*/
     background-color: white;
     border: 1px solid black;
     border-radius: 15px;
+    flex: 1;
 }
 
 section .order-box > .groups {
@@ -206,4 +207,27 @@ section .order-box .g-border {
 
 section .order-box .g-drink {
     background-color: rgb(82, 67, 67);
+}
+
+section .container .order-resume { 
+    width: 300px;
+    min-height: 300px;
+    background: rgb(92, 85, 85);
+    border-radius: 15px;
+    padding: 20px;
+    position: sticky;
+    top: 20px;
+}
+
+section .container .order-resume h1 {
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+section .container .order-resume p {
+    color: white;
+    font-size: 16px;
+    margin-bottom: 9px;
 }

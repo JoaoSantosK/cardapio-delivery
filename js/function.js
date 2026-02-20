@@ -4,20 +4,20 @@ import { Pedido } from './order.js';
 var bntR = document.getElementById('btn-r');
 var notifyTimeout;
 bntR.addEventListener('click', function() {
-    var inputOrder = document.getElementById('input-order');
-    inputOrder.value = '';
+
+    pedido.reset();       // 🔥 reseta o estado
+    renderResumo();       // 🔥 atualiza a tela
 
     var notify = document.getElementById('notfR');
     var parentNotify = document.getElementById('notf');
 
     if (notify && parentNotify) {
         notify.innerText = 'Pedido resetado com sucesso!';
+        parentNotify.classList.add('show');
 
-        parentNotify.classList.add('show'); // Exibe a notificação
+        clearTimeout(notifyTimeout);
 
-        clearTimeout(notifyTimeout); // Limpa o timeout anterior, se houver
-
-        notifyTimeout = setTimeout(() => { // Esconde a notificação após 3 segundos
+        notifyTimeout = setTimeout(() => {
             parentNotify.classList.remove('show');
         }, 3000);
     }
@@ -67,5 +67,30 @@ sizeButtons.forEach(button => {
             pedido.setDrink(button.dataset.drink);
             console.log("Bebida selecionada:", pedido.getDrink());
         }
+
+        renderResume(); // Atualiza o resumo do pedido
     });
 });
+
+// Função para exibir o resumo do pedido
+function renderResume() {
+
+    // 🔥 AQUI você cria a variável
+    const resume = pedido.getResumo();
+
+    // 🔥 Depois você usa ela
+    document.getElementById("resume-size").textContent =
+        resume.size ? `Tamanho: ${resume.size}` : "";
+
+    document.getElementById("resume-flavor").textContent =
+        resume.flavor ? `Sabores: ${resume.flavor}` : "";
+
+    document.getElementById("resume-tborder").textContent =
+        resume.tborder ? `Tipo de borda: ${resume.tborder}` : "";
+
+    document.getElementById("resume-border").textContent =
+        resume.border ? `Borda: ${resume.border}` : "";
+
+    document.getElementById("resume-drink").textContent =
+        resume.drink ? `Bebida: ${resume.drink}` : "";
+}

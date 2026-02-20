@@ -63,6 +63,17 @@ export class Pedido {
         return this.prices[this.size];
     }
 
+    getResumo() {
+        return {
+            size: this.size,
+            flavor: this.flavor,
+            tborder: this.tborder,
+            border: this.border,
+            drink: this.drink,
+            total: this.getPrice()
+        }
+    }
+
     isValid() {
         return this.size !== null && this.flavor !== null;
     }
@@ -82,6 +93,8 @@ export class Pedido {
         const resumo = {
             size: this.size,
             flavor: this.flavor,
+            borderType: this.tborder,
+            border: this.border,
             drink: this.drink,
             total: this.getPrice()
         };
