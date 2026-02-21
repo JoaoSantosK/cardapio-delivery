@@ -82,6 +82,8 @@ export class Pedido {
         this.size = null;
         this.flavor = null;
         this.drink = null;
+        this.tborder = null;
+        this.border = null;
     }
 
     finalizar() {

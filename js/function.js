@@ -5,8 +5,8 @@ var bntR = document.getElementById('btn-r');
 var notifyTimeout;
 bntR.addEventListener('click', function() {
 
-    pedido.reset();       // 🔥 reseta o estado
-    renderResumo();       // 🔥 atualiza a tela
+    pedido.reset(); // Reseta o pedido para os valores iniciais
+    renderResume(); // Atualiza o resumo do pedido para refletir o reset
 
     var notify = document.getElementById('notfR');
     var parentNotify = document.getElementById('notf');
@@ -74,11 +74,8 @@ sizeButtons.forEach(button => {
 
 // Função para exibir o resumo do pedido
 function renderResume() {
-
-    // 🔥 AQUI você cria a variável
     const resume = pedido.getResumo();
 
-    // 🔥 Depois você usa ela
     document.getElementById("resume-size").textContent =
         resume.size ? `Tamanho: ${resume.size}` : "";
 
