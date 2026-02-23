@@ -48,14 +48,14 @@ sizeButtons.forEach(button => {
             console.log("Tamanho selecionado:", pedido.getSize());
         }
         // Verificar se o botão tem um sabor ou bebida associado
-        if(button.dataset.flavor) {
-            pedido.setFlavor(button.dataset.flavor);
-            console.log("Sabor selecionado:", pedido.getFlavor());
+        if(button.dataset.flavors) {
+            pedido.setFlavors(button.dataset.flavors);
+            console.log("Sabores selecionados:", pedido.getFlavors());
         }
         // Verificar se o botão tem um tipo de borda associado
-        if(button.dataset.tborder) {
-            pedido.setTypeBorder(button.dataset.tborder);
-            console.log("Tipo de borda selecionado:", pedido.getTypeBorder());
+        if(button.dataset.dough) {
+            pedido.setDough(button.dataset.dough);
+            console.log("Tipo de massa selecionada:", pedido.getDough());
         }
         // Verificar se o botão tem o tipo de borda associado
         if(button.dataset.border) {
@@ -63,9 +63,9 @@ sizeButtons.forEach(button => {
             console.log("Borda selecionada:", pedido.getBorder());
         }
         // Verificar se o botão tem uma bebida associada
-        if(button.dataset.drink) {
-            pedido.setDrink(button.dataset.drink);
-            console.log("Bebida selecionada:", pedido.getDrink());
+        if(button.dataset.drinks) {
+            pedido.setDrinks(button.dataset.drinks);
+            console.log("Bebida selecionada:", pedido.getDrinks());
         }
 
         renderResume(); // Atualiza o resumo do pedido
@@ -77,17 +77,24 @@ function renderResume() {
     const resume = pedido.getResumo();
 
     document.getElementById("resume-size").textContent =
-        resume.size ? `Tamanho: ${resume.size}` : "";
+        resume.size ? `Tamanho: ${resume.size}` 
+            : "";
 
     document.getElementById("resume-flavor").textContent =
-        resume.flavor ? `Sabores: ${resume.flavor}` : "";
+        Object.keys(resume.flavors).length > 0
+            ? "Sabores: " + Object.entries(resume.flavors).map(([flavors, count]) => count > 1 ? `${flavors} (${count})` : flavors).join(" / ")
+            : "";
 
-    document.getElementById("resume-tborder").textContent =
-        resume.tborder ? `Tipo de borda: ${resume.tborder}` : "";
+    document.getElementById("resume-dough").textContent =
+        resume.dough ? `Tipo de borda: ${resume.dough}` 
+            : "";
 
     document.getElementById("resume-border").textContent =
-        resume.border ? `Borda: ${resume.border}` : "";
+        resume.border ? `Borda: ${resume.border}` 
+            : "";
 
-    document.getElementById("resume-drink").textContent =
-        resume.drink ? `Bebida: ${resume.drink}` : "";
+    document.getElementById("resume-drinks").textContent =
+        Object.keys(resume.drinks).length > 0 
+            ? "Bebidas: " + Object.entries(resume.drinks).map(([drink, count]) => `${drink} (${count})`).join(" / ")
+            : "";
 }

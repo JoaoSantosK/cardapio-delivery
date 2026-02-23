@@ -1,10 +1,10 @@
 export class Pedido {
     constructor() {
         this.size = null;
-        this.flavor = null;
-        this.tborder = null;
+        this.flavors = {};
+        this.dough = null;
         this.border = null;
-        this.drink = null;
+        this.drinks = {};
         this.prices = {
             Pequeno: 25,
             Médio: 35,
@@ -15,47 +15,93 @@ export class Pedido {
     }
 
     setSize(size) {
-        if (!this.prices[size]) {
-            console.warn("Tamanho inválido.");
+    if (!this.prices[size]) {
+        console.warn("Tamanho inválido.");
+        return;
+    }
+
+    this.size = size;
+
+    const max = this.getMaxFlavors();
+
+    let total = Object.values(this.flavors)
+        .reduce((acc, val) => acc + val, 0);
+
+    if (total > max) {
+        const ordered = Object.entries(this.flavors);
+
+        this.flavors = {};
+        let count = 0;
+
+        for (let [name, qty] of ordered) {
+            for (let i = 0; i < qty; i++) {
+                if (count < max) {
+                    if (!this.flavors[name]) this.flavors[name] = 0;
+                    this.flavors[name]++;
+                    count++;
+                    }
+                }
+            }
+        }
+    }
+
+    setFlavors(flavor) {
+        if (!this.size) {
+            console.warn("Selecione um tamanho primeiro.");
             return;
         }
-        this.size = size;
+
+        const max = this.getMaxFlavors();
+
+        const total = Object.values(this.flavors)
+            .reduce((acc, val) => acc + val, 0);
+
+        if (total >= max) {
+            console.warn(`Máximo de ${max} sabores permitido.`);
+            return;
+        }
+
+        if (this.flavors[flavor]) {
+            this.flavors[flavor]++;
+        } else {
+            this.flavors[flavor] = 1;
+        }
     }
 
-    setFlavor(flavor) {
-        this.flavor = flavor;
-    }
-
-    setTypeBorder(tborder) {
-        this.tborder = tborder;
+    setDough(dough) {
+        this.dough = dough;
     }
 
     setBorder(border) {
         this.border = border;
     }
 
-    setDrink(drink) {
-        this.drink = drink;
+    setDrinks(drinks) {
+        if (this.drinks[drinks]) {
+        this.drinks[drinks]++;
+        } else {
+        this.drinks[drinks] = 1;
+        }
     }
 
     getSize() {
         return this.size;
     }
 
-    getFlavor() {
-        return this.flavor;
+    getFlavors() {
+        return this.flavors;
     }
 
-    getTypeBorder() {
-        return this.tborder;
+    getDough() {
+        return this.dough;
     }
 
     getBorder() {
         return this.border;
     }
 
-    getDrink() {
-        return this.drink;
+    getDrinks() {
+        return this.drinks;
     }
 
     getPrice() {
@@ -66,23 +112,29 @@ export class Pedido {
     getResumo() {
         return {
             size: this.size,
-            flavor: this.flavor,
-            tborder: this.tborder,
+            flavors: this.flavors,
+            dough: this.dough,
             border: this.border,
-            drink: this.drink,
+            drinks: this.drinks,
             total: this.getPrice()
         }
     }
 
+    getMaxFlavors() {
+        if (this.size === "Super Família") return 4;
+        if (this.size === "Família") return 3;
+        else return 2;
+    }
+
     isValid() {
-        return this.size !== null && this.flavor !== null;
+        return this.size !== null && Object.keys(this.flavors).length > 0;
     }
 
     reset() {
         this.size = null;
-        this.flavor = null;
-        this.drink = null;
-        this.tborder = null;
+        this.flavors = {};
+        this.drinks = {};
+        this.dough = null;
         this.border = null;
     }
 
@@ -94,10 +146,10 @@ export class Pedido {
 
         const resumo = {
             size: this.size,
-            flavor: this.flavor,
-            borderType: this.tborder,
+            flavors: this.flavors,
+            dough: this.dough,
             border: this.border,
-            drink: this.drink,
+            drinks: this.drinks,
             total: this.getPrice()
         };
 
