@@ -12,6 +12,12 @@ export class Pedido {
             "Família": 55,
             "Super Família": 65
         };
+        this.drinksPrice = {
+            "Coca-Cola": 5,
+            "Pepsi": 5,
+            "Guaraná Antarctica": 4,
+            "Suco de laranja" : 6
+        };
     }
 
     setSize(size) {
@@ -104,9 +110,17 @@ export class Pedido {
         return this.drinks;
     }
 
+    getDrinksPrice() { // Fazer getDrinksPrice funcionar para retornar o valor das bebidas no getResumo
+        return this.drinksPrice;
+    }
+
     getPrice() {
+        let total = 0;
+
         if (!this.size) return 0;
-        return this.prices[this.size];
+            total += this.prices[this.size] || 0;
+
+        return total;
     }
 
     getResumo() {
@@ -150,7 +164,7 @@ export class Pedido {
             dough: this.dough,
             border: this.border,
             drinks: this.drinks,
-            total: this.getPrice()
+            total: this.getPrice(),
         };
 
         localStorage.setItem("pedido", JSON.stringify(resumo));

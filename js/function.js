@@ -47,7 +47,7 @@ sizeButtons.forEach(button => {
             pedido.setSize(button.dataset.size);
             console.log("Tamanho selecionado:", pedido.getSize());
         }
-        // Verificar se o botão tem um sabor ou bebida associado
+        // Verificar se o botão tem um sabor associado
         if(button.dataset.flavors) {
             pedido.setFlavors(button.dataset.flavors);
             console.log("Sabores selecionados:", pedido.getFlavors());
@@ -80,9 +80,9 @@ function renderResume() {
         resume.size ? `Tamanho: ${resume.size}` 
             : "";
 
-    document.getElementById("resume-flavor").textContent =
+    document.getElementById("resume-flavor").innerHTML =
         Object.keys(resume.flavors).length > 0
-            ? "Sabores: " + Object.entries(resume.flavors).map(([flavors, count]) => count > 1 ? `${flavors} (${count})` : flavors).join(" / ")
+            ? "Sabores: " + Object.entries(resume.flavors).map(([flavors, count]) => count > 1 ? `${flavors} (${count})` : flavors).join("<br>")
             : "";
 
     document.getElementById("resume-dough").textContent =
@@ -93,8 +93,16 @@ function renderResume() {
         resume.border ? `Borda: ${resume.border}` 
             : "";
 
-    document.getElementById("resume-drinks").textContent =
-        Object.keys(resume.drinks).length > 0 
-            ? "Bebidas: " + Object.entries(resume.drinks).map(([drink, count]) => `${drink} (${count})`).join(" / ")
-            : "";
+    document.getElementById("resume-drinks").innerHTML =
+    Object.keys(resume.drinks).length > 0 
+        ? "Bebidas:<br>" + Object.entries(resume.drinks)
+            .map(([drink, count]) => {
+                const price = pedido.getDrinksPrice()[drink];
+                const subtotal = price * count;
+                return `${drink} (${count}) - R$ ${subtotal}`;
+            })
+            .join("<br>")
+        : "";
+
+    console.log("Resumo atualizado:", resume);  
 }

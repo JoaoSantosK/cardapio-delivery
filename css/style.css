@@ -211,7 +211,7 @@ section .order-box .g-drink {
 
 section .container .order-resume { 
     width: 300px;
-    min-height: 300px;
+    min-height: 500px;
     background: rgb(92, 85, 85);
     border-radius: 15px;
     padding: 20px;
@@ -229,5 +229,5 @@ section .container .order-resume h1 {
 section .container .order-resume p {
     color: white;
     font-size: 16px;
-    margin-bottom: 9px;
+    margin-bottom: 16px;
 }
